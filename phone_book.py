@@ -16,19 +16,19 @@ def input_data():
 def parse_contact_list(contacts_list):
     new_contacts_list = list()
     for contact in contacts_list:
-        new_person = list()
+        new_contact = list()
         full_name_str = ",".join(contact[:3])
         result = re.findall(r'(\w+)', full_name_str)
         while len(result) < 3:
             result.append('')
-        new_person += result
-        new_person.append(contact[3])
-        new_person.append(contact[4])
+        new_contact += result
+        new_contact.append(contact[3])
+        new_contact.append(contact[4])
         phone_pattern = re.compile(PHONE_PATTERN)
         changed_phone = phone_pattern.sub(SUB_PHONE, contact[5])
-        new_person.append(changed_phone)
-        new_person.append(contact[6])
-        new_contacts_list.append(new_person)
+        new_contact.append(changed_phone)
+        new_contact.append(contact[6])
+        new_contacts_list.append(new_contact)
     return new_contacts_list
 
 
